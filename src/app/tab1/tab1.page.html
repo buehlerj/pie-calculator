@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      Quick Calc
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -13,5 +13,66 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-item>
+    <ion-label>Pie Diameter (Width)</ion-label>
+    <ion-input type="text" class="pizza-form-input" [(ngModel)]="pieAmeter" (ngModelChange)="zaSpecs = null" text-right id="input"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Price</ion-label>
+    <ion-input type="text" class="pizza-form-input" [(ngModel)]="price" (ngModelChange)="zaSpecs = null" text-right id="input"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Slices</ion-label>
+    <ion-input type="text" class="pizza-form-input" [(ngModel)]="sliceCount" (ngModelChange)="zaSpecs = null" text-right id="input"></ion-input>
+  </ion-item>
+
+  <div *ngIf="zaSpecs">
+    <div class="pizza-result-row">
+      <span class="value-amount">
+        {{zaSpecs.area | number:'1.2-2'}}
+      </span>
+      <span class="value-label">
+        Total Area (in<sup>2</sup>)
+      </span>
+    </div>
+    <div class="pizza-result-row">
+      <span class="value-amount">
+        {{zaSpecs.inchesPerDollar | number:'1.1-4'}}
+      </span>
+      <span class="value-label">
+        Area of Pizza Per Dollar (in<sup>2</sup> / $)
+      </span>
+    </div>
+    <div class="pizza-result-row">
+      <span class="value-amount">
+        {{zaSpecs.pricePerIn | number:'1.2-2'}}
+      </span>
+      <span class="value-label">
+        A Dollar's Worth of Pizza ($ / in<sup>2</sup>)
+      </span>
+    </div>
+    <div *ngIf="zaSpecs.areaPerSlice" class="pizza-result-row">
+      <span class="value-amount">
+        {{zaSpecs.areaPerSlice | number:'2.2-2'}}
+      </span>
+      <span class="value-label">
+        Slice Area (in<sup>2</sup> / slice)
+      </span>
+    </div>
+    <div *ngIf="zaSpecs.dollarsPerSlice" class="pizza-result-row">
+      <span class="value-amount">
+        {{zaSpecs.dollarsPerSlice | number:'2.2-2'}}
+      </span>
+      <span class="value-label">
+        Slice Cost ($ / in<sup>2</sup>)
+      </span>
+    </div>
+  </div>
+
+  <div class="fixed bottom full-width">
+    <div class="form-button" id="submit-button" (click)="calculateZaSpecs()">Calculate</div>
+    <div class="form-button" id="cancel-button" (click)="zaSpecs = null">Clear</div>
+  </div>
 </ion-content>
