@@ -18,12 +18,12 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'tab2',
+        path: 'compare',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+              import('../pages/compare/compare.module').then(m => m.ComparePageModule)
           }
         ]
       },
