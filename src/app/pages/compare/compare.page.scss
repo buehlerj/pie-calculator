@@ -1,0 +1,77 @@
+@import "../../../global.scss";
+
+.comparison-za-piece {
+  position: relative;
+  width: calc(50% - 4px);
+  height: 100%;
+  background-color: #0a3b1e;
+  padding: 4px;
+  padding-top: 8px;
+  margin: 0 2px;
+  transition: 300ms linear width, 300ms linear opacity;
+
+  &.remove-za-item {
+    width: 0;
+    opacity: 0;
+    white-space: nowrap;
+    padding: 0;
+    margin: 0;
+  }
+
+  &.only-one-za-showing {
+    width: calc(100% - 4px);
+  }
+}
+
+.scrolling-wrapper-flexbox {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  height: 100%;
+
+  .comparison-za-piece {
+    flex: 0 0 auto;
+  }
+
+  &.no-zas-to-compare {
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.remove-za-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: red;
+  border-radius: 13px;
+  padding: 1px;
+  z-index: 2;
+}
+
+.add-za-icon {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background-color: green;
+  border-radius: 13px;
+  padding: 1px;
+  font-size: 2em;
+  z-index: 2;
+}
+
+.ion-input-item {
+  margin-top: 3px;
+}
+
+.comparison-stat-container {
+  margin-top: 11px;
+}
+
+.calculation-label {
+  font-size: 0.8em;
+  color: gray;
+}
+
+.calclation-value {
+}

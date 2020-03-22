@@ -1,9 +1,84 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>compare</ion-title>
+    <ion-title>Compare</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div class="scrolling-wrapper-flexbox" [class.no-zas-to-compare]="zasToCompare.length === 0">
+    <div *ngIf="zasToCompare.length === 0">
+      Add a za to start your comparison
+    </div>
 
+    <div *ngFor="let currentZa of zasToCompare; let index = index" class="comparison-za-piece"
+      [class.remove-za-item]="currentZa.hideItem"
+      [class.only-one-za-showing]="zasToCompare.length === 1">
+      <ion-icon name="remove-outline" class="remove-za-icon" (click)="removeComparisonZa(index)"></ion-icon>
+
+      <ion-item class="ion-input-item">
+        <ion-label>Pie Diameter (Width)</ion-label>
+        <ion-input type="text" [(ngModel)]="currentZa.pieAmeter" (ngModelChange)="adjustCalculations(index)" text-right
+          id="input">
+        </ion-input>
+      </ion-item>
+
+      <ion-item class="ion-input-item">
+        <ion-label>Price</ion-label>
+        <ion-input type="text" [(ngModel)]="currentZa.price" (ngModelChange)="adjustCalculations(index)" text-right
+          id="input">
+        </ion-input>
+      </ion-item>
+
+      <ion-item class="ion-input-item">
+        <ion-label>Slices</ion-label>
+        <ion-input type="text" [(ngModel)]="currentZa.sliceCount" (ngModelChange)="adjustCalculations(index)" text-right
+          id="input"></ion-input>
+      </ion-item>
+
+      <div class="comparison-stat-container">
+        <div *ngIf="currentZa.area">
+          <div class="calculation-label">
+            Total Area (in<sup>2</sup>)
+          </div>
+          <div class="calculation-value">
+            {{currentZa.area | number:'1.2-2'}}
+          </div>
+        </div>
+        <div *ngIf="currentZa.pricePerIn">
+          <div class="calculation-label">
+            Area of Pizza Per Dollar (in<sup>2</sup> / $)
+          </div>
+          <div class="calculation-value">
+            {{currentZa.pricePerIn | number:'1.1-4'}}
+          </div>
+        </div>
+        <div *ngIf="currentZa.inchesPerDollar">
+          <div class="calculation-label">
+            A Dollar's Worth of Pizza ($ / in<sup>2</sup>)
+          </div>
+          <div class="calculation-value">
+            {{currentZa.inchesPerDollar | number:'1.2-2'}}
+          </div>
+        </div>
+        <div *ngIf="currentZa.areaPerSlice">
+          <div class="calculation-label">
+            Slice Area (in<sup>2</sup> / slice)
+          </div>
+          <div class="calculation-value">
+            {{currentZa.areaPerSlice | number:'1.1-4'}}
+          </div>
+        </div>
+        <div *ngIf="currentZa.dollarsPerSlice">
+          <div class="calculation-label">
+            Slice Cost ($ / in<sup>2</sup>)
+          </div>
+          <div class="calculation-value">
+            {{currentZa.dollarsPerSlice | number:'1.2-2'}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ion-icon name="add-outline" class="add-za-icon" (click)="addNewComparisonZa()"></ion-icon>
 </ion-content>
