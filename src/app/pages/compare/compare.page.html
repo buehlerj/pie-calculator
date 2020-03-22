@@ -11,28 +11,27 @@
     </div>
 
     <div *ngFor="let currentZa of zasToCompare; let index = index" class="comparison-za-piece"
-      [class.remove-za-item]="currentZa.hideItem"
-      [class.only-one-za-showing]="zasToCompare.length === 1">
+      [class.remove-za-item]="currentZa.hideItem" [class.only-one-za-showing]="zasToCompare.length === 1">
       <ion-icon name="remove-outline" class="remove-za-icon" (click)="removeComparisonZa(index)"></ion-icon>
 
       <ion-item class="ion-input-item">
-        <ion-label>Pie Diameter (Width)</ion-label>
-        <ion-input type="text" [(ngModel)]="currentZa.pieAmeter" (ngModelChange)="adjustCalculations(index)" text-right
-          id="input">
+        <ion-label class="compare-form-label">Diameter (Width)</ion-label>
+        <ion-input type="text" class="right-align compare-form-input" [(ngModel)]="currentZa.pieAmeter"
+          (ngModelChange)="adjustCalculations(index)" text-right id="input">
         </ion-input>
       </ion-item>
 
       <ion-item class="ion-input-item">
-        <ion-label>Price</ion-label>
-        <ion-input type="text" [(ngModel)]="currentZa.price" (ngModelChange)="adjustCalculations(index)" text-right
-          id="input">
+        <ion-label class="compare-form-label">Price</ion-label>
+        <ion-input type="text" class="right-align compare-form-input" [(ngModel)]="currentZa.price"
+          (ngModelChange)="adjustCalculations(index)" text-right id="input">
         </ion-input>
       </ion-item>
 
       <ion-item class="ion-input-item">
-        <ion-label>Slices</ion-label>
-        <ion-input type="text" [(ngModel)]="currentZa.sliceCount" (ngModelChange)="adjustCalculations(index)" text-right
-          id="input"></ion-input>
+        <ion-label class="compare-form-label">Slices</ion-label>
+        <ion-input type="text" class="right-align compare-form-input" [(ngModel)]="currentZa.sliceCount"
+          (ngModelChange)="adjustCalculations(index)" text-right id="input"></ion-input>
       </ion-item>
 
       <div class="comparison-stat-container">
