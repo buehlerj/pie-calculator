@@ -1,4 +1,4 @@
-@import '../../global.scss';
+@import '../../../global.scss';
 
 ion-content ion-toolbar {
   --background: translucent;
@@ -27,10 +27,6 @@ ion-content ion-toolbar {
 
 .pizza-result-row {
   margin: 6px 11px;
-}
-
-.value-amount {
-
 }
 
 .value-label {

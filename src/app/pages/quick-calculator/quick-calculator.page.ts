@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-tab1',
-  templateUrl: 'tab1.page.html',
-  styleUrls: ['tab1.page.scss']
+  selector: 'app-quick-calculator',
+  templateUrl: './quick-calculator.page.html',
+  styleUrls: ['./quick-calculator.page.scss'],
 })
-export class Tab1Page {
+export class QuickCalculatorPage implements OnInit {
   pieAmeter: number;
   price: number;
   sliceCount: number;
@@ -16,11 +16,10 @@ export class Tab1Page {
     this.pieAmeter = 12;
     this.price = 15;
     this.sliceCount = 8;
-    this.calculateZaSpecs();
   }
 
-  printPieWidth() {
-    console.log(this.pieAmeter);
+  ngOnInit() {
+    this.calculateZaSpecs();
   }
 
   calculateZaSpecs() {
